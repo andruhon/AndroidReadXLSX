@@ -1,0 +1,4 @@
+bin/
+.settings/org.eclipse.jdt.core.prefs
+.externalToolBuilders/
+.project

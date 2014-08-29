@@ -1,0 +1,2 @@
+ooxml-schemas-1.0.jar - is a full ooxml-schemas jar
+poi-ooxml-schemas-3.10-reduced-less.jar - is a reduced poi ooxml schemas jar - this one is enough to read simple xlsx file (new one with several rows)
