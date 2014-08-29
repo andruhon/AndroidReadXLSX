@@ -20,6 +20,7 @@ and add files/classes one by one into your poi-ooxml (using zip) as exceptions t
 This project already contains two reduced jars:
 * **libs/poi-ooxml-3.10-reduced.jar**
 * **libs/poi-ooxml-schemas-3.10-reduced-more.jar**
+
 these two are enough to read simple XLSX files with formulas and some formatting.
 All other jars are obviously should be included too, but they are not modified.
 
