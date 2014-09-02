@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -68,10 +69,10 @@ public class ReadXlsx extends Activity {
     }
     
     public void onPickXlsxButtonClick(View view) {
-		Toast.makeText(this, "Please select a file in XLSX format", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "Please select a file in Excel format", Toast.LENGTH_LONG).show();
 		Intent intent2Browse = new Intent();
 		intent2Browse.addCategory(Intent.CATEGORY_OPENABLE);
-		intent2Browse.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+		intent2Browse.setType("application/*");
 		intent2Browse.setAction(Intent.ACTION_GET_CONTENT);
 		startActivityForResult(intent2Browse,2);
     }
@@ -90,7 +91,7 @@ public class ReadXlsx extends Activity {
 			bos.close();
 			bis.close();
 			InputStream fileStream = new FileInputStream(simpleXlsxInternalStoragePath);
-			readXLSX(fileStream);
+			readExcel(fileStream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -104,7 +105,8 @@ public class ReadXlsx extends Activity {
 			Uri fileUri = data.getData();
 			try {
 				InputStream fileStream = cR.openInputStream(fileUri);
-				readXLSX(fileStream);
+				String mime = cR.getType(fileUri);
+				readExcel(fileStream, mime);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}			
@@ -134,16 +136,27 @@ public class ReadXlsx extends Activity {
 	 * read XLSX from file stream
 	 * @param fileStream
 	 */
-	private void readXLSX(InputStream fileStream) {
-		output.append("reading xlsx file...\n");
+	private void readExcel(InputStream fileStream, String mime) {
+		output.append("reading file...\n");
 		progress.setProgress(1);
 		xlsxFileStream = fileStream;
+		final String fileMime = mime;
 		new Thread(new Runnable(){
 			public void run() {
 				try {
-					Workbook workbook = new XSSFWorkbook(xlsxFileStream);
+					Workbook workbook = null;
+					if (fileMime.equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+						appendOutput("type xlsx");
+						workbook = new XSSFWorkbook(xlsxFileStream);						
+					} else if (fileMime.equals("application/vnd.ms-excel")) {
+						appendOutput("type xls");
+						workbook = new HSSFWorkbook(xlsxFileStream);
+					} else {
+						appendOutput("Unsupported file type");
+						return;						
+					}
 					progress.setProgress(5);
-					appendOutput("XSSFWorkbook instance created...\n");
+					appendOutput("Workbook instance created...\n");
 					Sheet sheet = workbook.getSheetAt(0);
 					appendOutput("getSheetAt(0) done...\n");
 					int rowsCount = sheet.getPhysicalNumberOfRows();
@@ -196,7 +209,7 @@ public class ReadXlsx extends Activity {
 				}	
 				
 				progress.setProgress(100);
-				appendOutput("finished reading xlsx file\n");
+				appendOutput("finished reading excel file\n");
 			}
 		}).start();
 	}

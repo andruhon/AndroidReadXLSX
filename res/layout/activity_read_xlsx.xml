@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:onClick="onPickXlsxButtonClick"
-        android:text="pick XLSX file" />
+        android:text="pick Excel file" />
 
     <Button
         android:id="@+id/readSimpleXlsx"
