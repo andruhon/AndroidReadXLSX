@@ -9,7 +9,7 @@ libs dir of this project contains following files:
 
 These jars are enough to read and write XLSX and XLS files. 
 
-poi-3.10-min-0.1.jar contains following libraries shrinked with proguard:
+poi-3.10-min-0.1.jar contains following libraries shrunk with proguard:
 *dom4j-1.6.1.jar
 *poi-3.10-FINAL-20140208.jar
 *poi-ooxml-3.10-FINAL-20140208.jar
@@ -45,7 +45,7 @@ The core idea is just to remove from poi-ooxml and poi-ooxml-schemas jars all cl
 For example presentationml and wordrpocessingml from poi-ooxml-schemas
 and other stuff...
 
-poi-ooxml is shrinked with proguard, poi-ooxml-schemas is shrinked manually - because I did not found proguard config which is not braking it.
+poi-ooxml was shrunk with proguard, poi-ooxml-schemas has been shrunk manually - because I did not find proguard config which is not braking it.
 
 After that just unpack full ooxml schemas pack ooxml-schemas-1.0.jar
 and add files/classes one by one into your poi-ooxml-schemas (using zip) as exceptions thrown by you app when you trying to read xlsx.
