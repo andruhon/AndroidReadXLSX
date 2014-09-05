@@ -10,28 +10,17 @@ libs dir of this project contains following files:
 These jars are enough to read and write XLSX and XLS files. 
 
 poi-3.10-min-0.1.jar contains following libraries shrunk with proguard:
+*stax-api-1.0.1.jar
 *dom4j-1.6.1.jar
 *poi-3.10-FINAL-20140208.jar
 *poi-ooxml-3.10-FINAL-20140208.jar
 *xmlbeans-2.3.0.jar
 
+STaX is re-compiled with 'javax' namespace renamed to 'aavax' to avoid using DX --core-library option and possible conflicts in future.
+Strings 'javax/xml/stream', 'javax/xml/namespace' and 'javax.xml.strings' in other binaries replaced with strings containing 'aavax' instead of 'javax'.
+**No more need in DX --core-library option!**
+
 Now tested with writing too - it works. Will publish example later.
-
-##Building project
-DX should be called with --core-library to build this project, one can modify dx.bat and add --core-library before %params%
---core-library option is needed because poi-ooxml has stax-api in its dependences.
-stax-api-1.0.1.jar contain java core libs which are not included in adroid.jar though.
-
-You can use ant to build this project just do:
-```
->ant clean
->ant build
-```
-If the project already contains build.xml,
-
-If you'd like to use reduced libs in your project without build.xml, do:
->android update project --path .
-to initialize ant in your project dir
 
 ##Why?
 If you try to build Android project with Apache POI XSSF out of box you would face whole bunch of problems.
