@@ -20,7 +20,7 @@ One can download these two jars and read XLSX in his application.
 Strings 'javax/xml/stream', 'javax/xml/namespace' and 'javax.xml.strings' in other binaries replaced with strings containing 'aavax' instead of 'javax'.
 
 
-Tested with reading and writing XLSX files. It might not work properly if you file contains Drawings or Charts. Please let me know if it fails.
+Tested with reading and writing XLSX files. It might not work properly if you file contains Drawings or Charts. It also might fail if you try to write some styles. Please let me know if it fails by any reason.
 
 ##Why?
 If you try to build Android project with Apache POI XSSF out of box you would face whole bunch of problems:
@@ -29,7 +29,7 @@ First and most major one is android's 65K methods limit. poi-ooxml-schemas-3.10-
 ([dx] trouble writing output: Too many method references: 67997; max is 65536.)
 ```
 
-Read following posts im my blog to see whole process of "porting":
+Read following posts in my blog to see whole process of "porting":
 * http://blog.kondratev.pro/2014/08/reading-xlsx-on-android.html
 * http://blog.kondratev.pro/2014/09/further-to-my-post-from-yesterday-on.html
 * http://blog.kondratev.pro/2014/09/reading-xlsx-on-android-3.html
