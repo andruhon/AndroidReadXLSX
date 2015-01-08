@@ -22,6 +22,21 @@ Strings 'javax/xml/stream', 'javax/xml/namespace' and 'javax.xml.strings' in oth
 
 Tested with reading and writing XLSX files. It might not work properly if you file contains Drawings or Charts. It also might fail if you try to write some styles. Please let me know if it fails by any reason.
 
+##Building the project with aa-poi-3.10-min-0.1.5.jar and aa-poi-ooxml-schemas-3.10-reduced-more-0.1.5.jar
+If one build the project with Gradle (Android studio), the following directive should be added into the app/build.gradle:
+```
+android {
+  ...
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+}
+```
+
+The jars are still quite large so this might happen that project will touch 65K methods limit if one add any other jars into the project. For example android appcompat Support Library will definitely cause this issue.
+
+
 ##Why?
 If you try to build Android project with Apache POI XSSF out of box you would face whole bunch of problems:
 First and most major one is android's 65K methods limit. poi-ooxml-schemas-3.10-FINAL-20140208.jar contains approximately 68K
