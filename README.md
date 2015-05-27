@@ -48,3 +48,7 @@ Read following posts in my blog to see whole process of "porting":
 * http://blog.kondratev.pro/2014/08/reading-xlsx-on-android.html
 * http://blog.kondratev.pro/2014/09/further-to-my-post-from-yesterday-on.html
 * http://blog.kondratev.pro/2014/09/reading-xlsx-on-android-3.html
+
+##Donate / help
+I don't ask for a donation, but you can join me on the LinkedIN in and endorse my Java skill if you find this hack useful:
+https://nz.linkedin.com/pub/andrei-kondratev/51/445/635
