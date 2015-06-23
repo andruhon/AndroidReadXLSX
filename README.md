@@ -12,7 +12,7 @@ lib/aa-poi-3.10-min-0.1.5.jar contains following libraries shrunk with proguard:
 * xmlbeans-2.3.0.jar
 
 lib/aa-poi-ooxml-schemas-3.10-reduced-more-0.1.5.jar contains ooxml-schemas shrunk manually
-Unfortunately I did not achieve workable result with reducing by proguard. 
+Unfortunately I did not achieve workable result with reducing by proguard.
 
 One can download these two jars and read XLSX in his application.
 
@@ -20,7 +20,7 @@ One can download these two jars and read XLSX in his application.
 Strings 'javax/xml/stream', 'javax/xml/namespace' and 'javax.xml.strings' in other binaries replaced with strings containing 'aavax' instead of 'javax'.
 
 
-Tested with reading and writing XLSX files. It might not work properly if you file contains Drawings or Charts. It also might fail if you try to write some styles. Please let me know if it fails by any reason.
+Tested with reading and writing XLSX files. It might not work properly if the file contains Drawings or Charts. It also might fail if you try to write some styles. Please let me know if it fails by any reason.
 
 ##Building the project with aa-poi-3.10-min-0.1.5.jar and aa-poi-ooxml-schemas-3.10-reduced-more-0.1.5.jar
 If one build the project with Gradle (Android studio), the following directive should be added into the app/build.gradle:
