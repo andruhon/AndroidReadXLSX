@@ -1,6 +1,6 @@
 #Reading XLSX on Android
 
-Proof that demonstrates feasibility of reading XLSX files with Apache POI XSSF on Android.
+Proof that demonstrates feasibility of reading and writing XLSX files with Apache POI XSSF on Android.
 
 This is actually not "out of box" POI, but kind of port.
 
