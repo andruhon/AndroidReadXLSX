@@ -1,6 +1,6 @@
 #Not needed any more!
 Please note that all this hacking is not needed any more with new Android Build Tools 21+  and Android 5 (ART):  
-Please refer this blog post for details:  
+Visit this blog post for details:  
 http://blog.kondratev.pro/2015/08/reading-xlsx-on-android-4-and-hopefully.html  
 Generally all you need is to enable multi-dex support and build your project with --core-library option.
 
