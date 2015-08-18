@@ -57,6 +57,9 @@ Read following posts in my blog to see whole process of "porting":
 * http://blog.kondratev.pro/2014/09/further-to-my-post-from-yesterday-on.html
 * http://blog.kondratev.pro/2014/09/reading-xlsx-on-android-3.html
 
+##Known issues
+It fails to create a new XLSX file with a new sheet. Workaround is in keeping pre-created blank XLSX in app assets and using this file as templates. Populating/writing existing files with existing sheets works fine.
+
 ##Donate / help
 I don't ask for a donation, but you can join me on the LinkedIN in and endorse my Java skill if you find this hack useful:
 https://nz.linkedin.com/pub/andrei-kondratev/51/445/635
