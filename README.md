@@ -3,6 +3,7 @@ Please note that all this hacking is not needed any more with new Android Build 
 Visit this blog post for details:  
 http://blog.kondratev.pro/2015/08/reading-xlsx-on-android-4-and-hopefully.html  
 Generally all you need is to enable multi-dex support and build your project with --core-library option.
+See also the repo with repacked POI 3.12 jars and gradle config examples: https://github.com/andruhon/android5xlsx
 
 Please refer to the text below if you still need to maintain Android 4 (Dalvik):
 
