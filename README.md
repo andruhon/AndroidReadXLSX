@@ -7,47 +7,32 @@ See also the repo with repacked POI 3.12 jars and gradle config examples: https:
 
 Please refer to the text below if you still need to maintain Android 4 (Dalvik):
 
-#Reading XLSX on Android
+#Reading XLSX on Android 4
 
-Proof that demonstrates feasibility of reading and writing XLSX files with Apache POI XSSF on Android.
+A workaround make limited usage of Apache POI XSSF on the Android 4 possible.
 
-This is actually not "out of box" POI, but kind of port.
+Se usage example with Gradle / Android Studio in [example](example). Old Ant example can be found in [antbuild](https://github.com/andruhon/AndroidReadXLSX/tree/antbuild) branch.
 
-lib/aa-poi-3.10-min-0.1.5.jar contains following libraries shrunk with proguard:
-* stax-api-1.0.1.jar
-* dom4j-1.6.1.jar
-* poi-3.10-FINAL-20140208.jar
-* poi-ooxml-3.10-FINAL-20140208.jar
-* xmlbeans-2.3.0.jar
+This is actually not "out of box" POI chopped from something like 80K methods down to fit into 65K methods android limit.
 
-lib/aa-poi-ooxml-schemas-3.10-reduced-more-0.1.5.jar contains ooxml-schemas shrunk manually
-Unfortunately I did not achieve workable result with reducing by proguard.
+**JARs to download:**
 
-One can download these two jars and read XLSX in his application.
+* [aa-poi-3.10-min-0.1.5.jar](aa-poi-3.10-min-0.1.5.jar) contains following libraries, shrunk with proguard:
+* [aa-poi-ooxml-schemas-3.10-reduced-more-0.1.5.jar](aa-poi-ooxml-schemas-3.10-reduced-more-0.1.5.jar) contains ooxml-schemas, shrunk manually
 
-**It does work without DX --core-library** option because StAX is re-compiled with 'javax' namespace renamed to 'aavax'. So namespace conflict is not possible any more. 
+
+**It does work without DX --core-library** option because StAX is re-compiled with 'javax' namespace renamed to 'aavax'. So namespace conflict is not possible any more.
 Strings 'javax/xml/stream', 'javax/xml/namespace' and 'javax.xml.strings' in other binaries replaced with strings containing 'aavax' instead of 'javax'.
-
 
 Tested with reading and writing XLSX files. It might not work properly if the file contains Drawings or Charts. It also might fail if you try to write some styles. Please let me know if it fails by any reason.
 
 ##Building the project with aa-poi-3.10-min-0.1.5.jar and aa-poi-ooxml-schemas-3.10-reduced-more-0.1.5.jar
-If one build the project with Gradle (Android studio), the following directive should be added into the app/build.gradle:
-```
-android {
-  ...
-    packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-    }
-}
-```
 
 The jars are still quite large so this might happen that project will touch 65K methods limit if one add any other jars into the project. For example android appcompat Support Library will definitely cause this issue.
 
 
 ##Why?
-If you try to build Android project with Apache POI XSSF out of box you would face whole bunch of problems:
+If you try to build Android project with Apache POI XSSF out of box you would face whole bunch of problems:<br />
 First and most major one is android's 65K methods limit. poi-ooxml-schemas-3.10-FINAL-20140208.jar contains approximately 68K
 ```
 ([dx] trouble writing output: Too many method references: 67997; max is 65536.)
@@ -59,7 +44,7 @@ Read following posts in my blog to see whole process of "porting":
 * http://blog.kondratev.pro/2014/09/reading-xlsx-on-android-3.html
 
 ##Known issues
-It fails to create a new XLSX file with a new sheet. Workaround is in keeping pre-created blank XLSX in app assets and using this file as templates. Populating/writing existing files with existing sheets works fine.
+It fails to create a new XLSX file with a new sheet. Workaround is in keeping pre-created blank XLSX in app assets and using this file as templates. Populating/writing existing files with existing sheets works fine. Find workaround example in [MainActivity.java:onWriteClick](example/app/src/main/java/pro/kondratev/xlsxpoiexample/MainActivity.java)
 
 ##Donate / help
 I don't ask for a donation, but you can join me on the LinkedIN in and endorse my Java skill if you find this hack useful:
