@@ -1,5 +1,7 @@
 # Not needed any more!
-* Archived *
+
+**Archived**
+
 Please note that all this hacking is not needed any more with new Android Build Tools 21+  and Android 5 (ART):  
 Visit this blog post for details:  
 http://blog.kondratev.pro/2015/08/reading-xlsx-on-android-4-and-hopefully.html  
